@@ -408,4 +408,12 @@ def Translate(
             if translation.endswith(".json"):
                 json.dump(merged, f, indent=2, ensure_ascii=False)
             elif translation.endswith(".yaml"):
-                yaml.safe_dump(merged, f, allow_unicode=True, sort_keys=False)
+                yaml_str = yaml.dump(
+                    merged,
+                    stream=None,
+                    allow_unicode=True,
+                    sort_keys=False
+                )
+
+                with open(translation, "w", encoding="utf-8") as f:
+                    f.write(yaml_str)
