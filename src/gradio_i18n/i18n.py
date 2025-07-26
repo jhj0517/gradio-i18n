@@ -404,7 +404,7 @@ def Translate(
     ):
         merged = dump_blocks(block, include_translations=translation_dict)
 
-        with open(translation, "w") as f:
+        with open(translation, "w", encoding="utf-8") as f:
             if translation.endswith(".json"):
                 json.dump(merged, f, indent=2, ensure_ascii=False)
             elif translation.endswith(".yaml"):
